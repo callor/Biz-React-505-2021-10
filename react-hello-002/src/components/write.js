@@ -7,7 +7,7 @@ const write = (props) => {
       <p>
         <input
           name="f_name"
-          defaultChecked={friend.f_name}
+          defaultValue={friend.f_name}
           onChange={onChangeHandle}
         />
       </p>
