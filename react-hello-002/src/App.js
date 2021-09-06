@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import Write from "./components/write";
 import View from "./components/view";
+import View_1 from "./components/view_1";
+import View_2 from "./components/view_2";
 
 function App() {
   /**
@@ -33,10 +35,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <View_2 fo={friend} />
         <img src={logo} className="App-logo" alt="logo" />
-        <Write friend={friend} onChangeHandle={onChangeHandle} />
-        <View friend={friend} />
+        <Write fd={friend} onChangeHandle={onChangeHandle} />
+        <View fo={friend} />
       </header>
+      <View_1 fo={friend} />
     </div>
   );
 }
