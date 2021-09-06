@@ -120,6 +120,13 @@ const Write = () => {
     setBBsVO({ ...bbsVO, [name]: value });
   };
 
+  /**
+   * <BBsView bbs={bbsVO} />
+   * 1. import 된 BBSView를 화면에 연결하라
+   * 2. 현재(write.js)에서 선언된 state 객체를
+   * 	bbs라는 이름의 변수에 담아서
+   * 	BBsView에게 전달하라
+   */
   return (
     <form>
       <p>
@@ -158,7 +165,7 @@ const Write = () => {
         />
       </p>
       <div>
-        <BBsView bbs={bbsVO} />
+        <BBsView bbs={bbsVO} b_name={b_name} />
       </div>
     </form>
   );
