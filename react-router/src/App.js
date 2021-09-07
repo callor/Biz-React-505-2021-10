@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import "./css/menu.css";
+import MainNav from "./comps/MainNav";
 import Home from "./comps/Home";
 import About from "./comps/About";
 import BBsWrite from "./comps/BBsWrite";
@@ -19,9 +20,21 @@ import BBsWrite from "./comps/BBsWrite";
 // 선택적으로 컴포넌트를 나타게 하는 도구
 // 이 컴포넌트를 사용하여 Home, About, BBsWriter 컴포넌트와
 // Link 컴포넌트를 연결하기
-import { BrowserRouter, Link, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 function App() {
+  /**
+   * Navigation menu 설정할때
+   * Link 또는 NavLink 컴포넌트를 사용한다
+   *
+   * NavLink를 사용하면
+   * NavLink에 의해 활성화된 페이지가 열리면
+   * menu stype을 지정하여 어떤 메뉴가 활성화 된 것인지를
+   * 표현할수 있다
+   * activeStyle={스타일변수}
+   * activeClassName="클래스명"
+   *
+   */
   return (
     <BrowserRouter>
       <div className="App">
@@ -29,19 +42,9 @@ function App() {
           <img src={logo} className="App-logo" alt="logo" />
           <h3>나의 React 프로젝트</h3>
         </header>
-        <ul className="main_menu">
-          <li>
-            <Link>Home</Link>
-          </li>
-          <li>
-            <Link>나의 소개</Link>
-          </li>
-          <li>
-            <Link>자유게시판</Link>
-          </li>
-        </ul>
+        <MainNav />
         <Route path="/" component={Home} exact />
-        <Route path="/about" component={About} />
+        <Route path="/about" component={About} exact />
         <Route path="/bbs" component={BBsWrite} exact />
         <Route path="/bbs/write" component={BBsWrite} />
       </div>

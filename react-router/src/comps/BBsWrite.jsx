@@ -1,8 +1,9 @@
 import React from "react";
+import "../css/write.css";
 
 function BBsWrite() {
   return (
-    <div>
+    <div className="bbs_write">
       <div>
         <label htmlFor="">작성일자</label>
         <input type="text" />

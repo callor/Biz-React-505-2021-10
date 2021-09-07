@@ -1,8 +1,11 @@
 import React from "react";
+// About.jsx 는 src/comps 폴더에 있기 때문에
+// src/css 폴더에 있는 about.css를 import하기 위한 경로 지정 주의
+import "../css/about.css";
 
 function About() {
   return (
-    <div>
+    <div className="about">
       <h1>자기소개서</h1>
       <div>
         <label htmlFor="">이름</label>
