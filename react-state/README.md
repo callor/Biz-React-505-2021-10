@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# React Project State
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React에서는 변수, 객체를 "상태(state)"로 취급한다
+- React는 변수, 객체의 값이 변경이 되면 자동으로 해당 부분을 다시 rendering한다
+- React는 변수, 객체의 값이 변경되는 것을 항상 감시하고 있다
+- 변수, 객체는 직접적인 값의 변경을 해서는 안된다
+- 변수, 객체의 값을 변경할 필요가 있을때는 state관련 코드를 사용하여 변경해야 한다.
 
-## Available Scripts
+# 상태로 취급되는 변수, 객체
 
-In the project directory, you can run:
+- React에서 모든 변수나 객체를 상태로 취급하지는 않는다
+- 상태로 취급되는 변수나 객체는 화면에 보여지는 대상이다
+- 화면에 나타나서 보여지는 변수나 객체는 상태로 취급한다.
+- 일반적인 내부 연산에 필요한 변수나 객체는 const, let, var 등의 키워드로 변수를 선언하고 값을 자유롭게 변경 할수 있다
+- 프로젝트에서 한번이라도 UI와 관련된 곳에서 사용되는 변수, 객체는 절대 임의로 만들고 변경해서는 안된다.
+- 상태로 취급되는 객체나 변수는 useState() 함수를 사용하여 생성, 선언해야 한다.
 
-### `yarn start`
+# 상태로 만들어진 변수의 선언 위치
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 상태로 변수가 만들어지면 그 변수는 프로젝트의 여러 컴포넌트에서 공유하며 화면에 보여지게 처리할수 있다
+- 상위 컴포넌트에서 하위 컴포넌트에 전달(공유)된 상태 변수는 read only의 props(properties) 로 변경되어 전달된다.
+- 상위 컴포넌트에서 전달받은 props 상태변수는 보여지는 용도로만 사용할수 있다
+- 만약 형제관계의 컴포넌트가 같은 변수를 공유하려고 한다면 그 변수는 상위(부모) 컴포넌트에서 상태로 선언되어야 한다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 현재 프로젝트의 컴포넌트 구성과 상태변수 선언
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- App.js가 부모 컴포넌트이고, Write.js 와 View.js는 서로 형제 관계의 컴포넌트이다
+- 프로젝트의 구성은 Write.js에서 input box에 데이터를 입력하면 즉시 view.js에 내용이 preview되도록 할 것이다
+- 이렇게 구성되는 프로젝트는 공유되는 상태변수를 App.js에서 선언해야 한다

@@ -1,0 +1,23 @@
+div.bbs_view {
+  width: 80%;
+}
+
+div.bbs_view label,
+div.bbs_view span {
+  display: inline-block;
+  width: 40%;
+  padding: 8px;
+  margin: 5px;
+}
+
+div.bbs_view label {
+  text-align: right;
+  font-weight: bold;
+  background-color: #ccc;
+}
+
+div.bbs_view span {
+  text-align: left;
+  border-top: 1px solid blue;
+  border-bottom: 1px solid blue;
+}
