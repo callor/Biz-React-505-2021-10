@@ -21,7 +21,7 @@ function MainNav() {
   return (
     <ul className="main_menu">
       <li>
-        <NavLink to="/" activeStyle={activeNavStyle}>
+        <NavLink to="/" activeStyle={activeNavStyle} exact>
           Home
         </NavLink>
       </li>
