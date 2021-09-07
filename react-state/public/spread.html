@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input name="b_name" placeholder="이름을 입력하세요" />
+  </body>
+  <script>
+    const b_name = document.querySelector("input[name='b_name'");
+    b_name.addEventListener("change", (e) => {
+      // const name = e.target.name;
+      // const value = e.target.value;
+      const { name, value } = e.target;
+      const jData = { [name]: value };
+      // const jData = {name : value}
+      console.log(jData.name); // 오류발생
+      console.log(jData.b_name); // 정상코드
+    });
+  </script>
+</html>

@@ -25,6 +25,21 @@ function App() {
    */
   const [bbsVO, setBBs] = useState(bbsSample);
 
+  // input box의 데이터 change event를 처리할 함수 선언
+  const bbsChange = (event) => {
+    const { name, value } = event.target;
+
+    // 배열요소로 변수 선언하기
+    setBBs({ ...bbsVO, [name]: value });
+
+    // 아래의 중복되는 if을 사용한 코드를 단순화 시킬수 있다
+    if (name === "b_date") {
+      setBBs({ ...bbsVO, b_date: value });
+    } else if (name === "b_time") {
+      setBBs({ ...bbsVO, b_time: value });
+    }
+  };
+
   /**
    * <Write bbs={bbsVO}/> 코드에 대한 설명
    * import 된 Write.js 컴포넌트를 결합하고
@@ -37,6 +52,12 @@ function App() {
    * Write(bbsVO) 형식으로 전달하고
    * function Write(bbs) {  }
    *
+   *
+   * <Write onBBsChange={bbsChage} /> 코드 설명
+   * App.js 에 선언된 bbsChange() 함수를
+   * onBBsChange이름으로 전달하겠다
+   *
+   *
    */
   return (
     <div className="App">
@@ -45,7 +66,7 @@ function App() {
       </header>
       <section className="main_section">
         <article>
-          <Write bbs={bbsVO} />
+          <Write bbs={bbsVO} onBBsChange={bbsChange} />
         </article>
         <article>
           <View bbs={bbsVO} />

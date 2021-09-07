@@ -27,3 +27,10 @@
 - App.js가 부모 컴포넌트이고, Write.js 와 View.js는 서로 형제 관계의 컴포넌트이다
 - 프로젝트의 구성은 Write.js에서 input box에 데이터를 입력하면 즉시 view.js에 내용이 preview되도록 할 것이다
 - 이렇게 구성되는 프로젝트는 공유되는 상태변수를 App.js에서 선언해야 한다
+
+## 현재 프로젝트에서 상태 데이터의 변경
+
+- App.js에서 bbsVO 상태를 선언하고 Write.js와 View.js에 전파하였다
+- Writer.js 에서 input 에 데이터를 입력하면 View.js에 입력된 내용이 전파되도록 하여야 한다.
+- 데이터를 입력하는것은 Write.js 이지만 실제 입력된 데이터를 상태에 반영하는 곳은 App.js가 되어야 한다.
+- 즉, App.js에 상태를 변경하는 함수를 선언하고, Write.js에 함수도 전달하여 대리 실행 하도록 해야 한다.
