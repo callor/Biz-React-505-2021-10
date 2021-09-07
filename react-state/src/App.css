@@ -1,12 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
 }
-
+/*
+	window OS 의 접근성  / window 애니메이션 재생 부분이
+	off 되어 있으면 logo의 회전 애니메이션을 중지하도록 설정하기
+	no-preference(애니메이션 재생 off 아니면)
+*/
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -15,7 +25,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +45,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+section.main_section {
+  display: flex;
+  width: 100vw;
+}
+
+section.main_section article {
+  flex: 1;
+  border: 1px solid blue;
+  margin: 10px;
 }

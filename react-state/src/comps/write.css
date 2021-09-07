@@ -1,0 +1,23 @@
+div.bbs_write_form {
+  width: 80%;
+}
+
+div.bbs_write_form label,
+div.bbs_write_form input {
+  display: inline-block;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+div.bbs_write_form input {
+  outline: 0;
+  border: 1px solid #ddd;
+  width: 60%;
+  text-align: left;
+}
+
+div.bbs_write_form label {
+  width: 30%;
+  text-align: right;
+}
