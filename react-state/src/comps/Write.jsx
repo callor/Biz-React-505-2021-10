@@ -36,23 +36,41 @@ const Write = ({ bbs, onBBsChange }) => {
     <div className="bbs_write_form">
       <div>
         <label>작성일자</label>
-        <input name="b_date" type="date" defaultValue={b_date} />
+        <input
+          name="b_date"
+          type="date"
+          defaultValue={b_date}
+          onChange={onBBsChange}
+        />
       </div>
       <div>
         <label>작성시각</label>
-        <input name="b_time" type="time" defaultValue={b_time} />
+        <input
+          name="b_time"
+          type="time"
+          defaultValue={b_time}
+          onChange={onBBsChange}
+        />
       </div>
       <div>
         <label>글쓴이</label>
-        <input name="b_writer" defaultValue={b_writer} />
+        <input name="b_writer" defaultValue={b_writer} onChange={onBBsChange} />
       </div>
       <div>
         <label>제목</label>
-        <input name="b_subject" defaultValue={b_subject} />
+        <input
+          name="b_subject"
+          defaultValue={b_subject}
+          onChange={onBBsChange}
+        />
       </div>
       <div>
         <label>내용</label>
-        <input name="b_content" defaultValue={b_content} />
+        <input
+          name="b_content"
+          defaultValue={b_content}
+          onChange={onBBsChange}
+        />
       </div>
     </div>
   );
