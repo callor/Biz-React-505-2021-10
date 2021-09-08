@@ -36,7 +36,7 @@
   width: 100vw;
   background-image: url("./images/header_background.jpg");
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  background-attachment: local;
   background-position: center;
   background-size: cover;
 

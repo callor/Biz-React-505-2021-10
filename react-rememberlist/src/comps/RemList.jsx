@@ -1,17 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // JS 코드에 전반적으로 사용되는 날짜, 시간을 관리하는 객체
 import moment from "moment";
 import UUID from "react-uuid";
 
 // list 의 제목을 배열로 선언
-const headArray = ["날짜", "시간", "기억핟일"];
+const headArray = ["날짜", "시간", "기억할일"];
 const rem_header = () => {
   // 제목배열을 map()를 이용하여 forEach하기
   return headArray.map((text) => {
     // 제목배열의 요소인 문자열을 포함하는 th tag를 생성하여 return
-    return <th>{text}</th>;
+    return <th key={UUID()}>{text}</th>;
   });
 };
 
@@ -28,6 +28,34 @@ function RemList() {
    * rememberList를 담을 배열을 "상태"로 선언하기
    */
   const [rememberList, setRememberList] = useState([]);
+
+  const fetchData = () => {
+    const remString = localStorage.rememberList;
+    if (remString) {
+      console.log("Fetch Data");
+      const remJSON = JSON.parse(remString);
+      setRememberList(remJSON);
+    }
+  };
+
+  // 상태가 없으면 최초에 rendering될때 한번만 함수를 호출한다
+  useEffect(fetchData, []);
+
+  const saveStorage = () => {
+    console.log("EFFECT");
+    /**
+     * rememberList 객체 배열에 담긴 데이터를
+     * JSON String 문자열로 변환하여 JSON.stringify()
+     * localStorage에 rememberList 라는 이름으로 저장하라
+     */
+    localStorage.rememberList = JSON.stringify(rememberList);
+  };
+
+  // useEffect(함수, 상태대상)
+  // 화면에 rendering이 발생할때 실행되는 public event 연결
+  // 일부러 호출하거나, 실행하지 않아도
+  // 어떤 조건이 발생하면 자동으로 호출되어 실행되는 함수
+  useEffect(saveStorage, [rememberList]);
 
   /**
    * list중 한 요소를 더블클릭하면
@@ -56,13 +84,13 @@ function RemList() {
         }
         return remember;
       });
-
       setRememberList([..._list]);
     }
   };
   const list_body = rememberList.map((remember) => {
     return (
       <tr
+        key={remember.r_id}
         data-uuid={remember.r_id}
         className={remember.r_comp ? "comp" : ""}
         onDoubleClick={trOnClick}
@@ -107,11 +135,13 @@ function RemList() {
   };
   return (
     <table className="rem_list">
-      <tr>{rem_header()}</tr>
+      <thead>
+        <tr>{rem_header()}</tr>
+      </thead>
       <tbody>
         {list_body}
         <tr>
-          <td colspan="2">기억할일</td>
+          <td colSpan="2">기억할일</td>
           <td>
             <input
               onKeyDown={onKeyDown}
