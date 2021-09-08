@@ -12,3 +12,11 @@
 
 - 할일을 입력한 후 Enter를 누르면 날짜와 시간을 자동을 생성하여 저장
 - yarn add moment
+
+## rememberList 배열에 ID값 추가하기
+
+- 단순히 배열에 데이터를 추가만 하는 경우는 특별히 ID 등의 값이 필요없을 것이다
+- 하지만 Update, Delete 등을 구현하고자 할때는 어떤 데이터를 Update, Delete하는지 명확하게 할 필요가 있다
+- 만약 배열의 index(첨자)를 기준으로 Update, Delete를 수행하는 것은 내가 워하는 데이터 요소를 Update, Delete한다는 보장이 없다. 매우 위험한 코드가 될수 있다
+- 데이터를 배열에 추가할때 ID 칼럼을 생성하고 UNIQUE한 데이터를 만들어서 값을 저장할 필요가 있다
+- yarn add react-uuid 를 사용하여 UNIQUE 한 ID 값을 만들자
