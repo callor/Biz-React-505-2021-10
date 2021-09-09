@@ -1,0 +1,30 @@
+ul.main_nav {
+  display: flex;
+  background-color: blue;
+  color: white;
+  list-style: none;
+}
+
+ul.main_nav li:nth-of-type(3) {
+  margin-left: auto;
+}
+
+ul.main_nav a {
+  display: inline-block;
+  padding: 0.8rem;
+  text-decoration: none;
+  color: inherit;
+
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+
+ul.main_nav a:hover {
+  border-bottom: 3px solid yellow;
+}
+
+a.active_nav {
+  font-weight: bold;
+  background-color: brown;
+}

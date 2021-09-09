@@ -17,6 +17,59 @@ const remeberSampleDat = {
 };
 
 function RemList() {
+  /**
+   * 함수를 선언하는 이유
+   * 반복적으로 사용하는 코드를 하나로 묶어두고
+   * 함수이름을 통해서 마치 한개의 명령문처럼 코드를
+   * 사용하는데 목적이 있다
+   *
+   * const f =()=>{
+   * 	console.log("대한민국")
+   * }
+   *
+   * 선언된 함수를 3번 호출하면
+   * f()
+   * f()
+   * f()
+   *
+   * 대한민국
+   * 대한민국
+   * 대한민국
+   *
+   * 위의 예제는 함수를 1번 만들고
+   * 3번 활용(사용)한 것이다
+   *
+   * 일반적인 함수는 사용하기 전에 만들고, 사용을 계속하고.. 이런식으로
+   * 진행이 되는데
+   *
+   * react는 한번 rendering된 화면은 특별한 값(상태)의 변화가 발생하면
+   * 그 부분만 다시 그리는 동작이 발생한다
+   *
+   * 어떤 화면(컴포넌트)이 하나 생성되었는데
+   * 그 화면을 다시 열고, 닫는 동작이 반복될때
+   * 내부의 코드는 변함이 없을 것이다
+   * 이런 과정에 선언된 함수는 화면이 다시 열릴때마다 반복적으로
+   * 다시 선언되고 만들어진다
+   * 코드는 변함이 없고 내부에 화면을 그렸던 코드는
+   * 이전에 생성된 코드가 있는데
+   * 함수만 계속해서 반복적으로 선언, 생성이 되니 불편하다
+   *
+   * 그래서 함수를 useCallback( 함수() )로 감싸버린다
+   * react야 함수()를 네가(useCallback) 보관하고 있다가
+   * 다음에 내가 또 함수() 가 필요할때 나에게 다시 달라
+   *
+   * memoization
+   * 함수() 가 이미 이전에 한번이라도 생성된 적이 있으면
+   * 재 활용을 하고 없을때만 만들어서 사용하겠다 라는 의미
+   *
+   * react는 화면이 랜더링 될때마다 함수들이 생성된다
+   * 기존에 있던 함수는 버려지고 새로운 함수가 게속해서 반복 생성된다
+   *
+   * useCallback()으로 감싼 함수는 memoization되어
+   * 코드나 값이 변경되지 않으면 함수코드를 재 사용(활용)하게 된다
+   *
+   *
+   */
   const rem_header = useCallback(() => {
     // 제목배열을 map()를 이용하여 forEach하기
     return headArray.map((text) => {
@@ -80,11 +133,11 @@ function RemList() {
        * sort()는 자기 자신을 변경한다
        */
       rememberList.sort((pre, next) => {
-        if (pre.r_comp && !next.r_comp) return -1;
-        if (!pre.r_comp && next.r_comp) return 1;
-        if (next.r_date > pre.r_date && next.r_time > pre.r_time) return 1;
+        console.log("pre", pre.r_comp, "next", next.r_comp);
+        if (pre.r_comp && !next.r_comp) return 1;
+        if (!pre.r_comp && next.r_comp) return -1;
+        return 0;
       });
-
       localStorage.rememberList = JSON.stringify(rememberList);
     }
   };
