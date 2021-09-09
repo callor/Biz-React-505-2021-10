@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { firestore, realDB } from "../config/BBSConfig";
+import { firestore } from "../config/BBSConfig";
 import moment from "moment";
 
 // props.history
@@ -47,15 +47,6 @@ function BBsWrite({ history }) {
       .collection("bbs")
       //   .add(saveBBS)
       .doc()
-      .set(saveBBS)
-      .then((result) => {
-        console.log(result);
-        history.push("/");
-      });
-
-    realDB
-      .ref("bbs/" + realDB.ref().child("bbs").push().key)
-      //   .add(saveBBS)
       .set(saveBBS)
       .then((result) => {
         console.log(result);

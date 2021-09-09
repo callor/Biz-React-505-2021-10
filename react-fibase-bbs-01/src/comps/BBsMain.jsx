@@ -1,39 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "../css/BBs.css";
-import { firestore, realDB } from "../config/BBSConfig";
+import { firestore } from "../config/BBSConfig";
 
 function BBsMain() {
   const [bbsData, setBBsData] = useState([]);
   const firebaseFetch = () => {
-    // firestore
-    //   .collection("bbs")
-    //   .get()
-    //   .then((bbsList) => {
-    //     console.log(bbsList.size);
-    //     bbsList.forEach((bbs) => {
-    //       console.log(bbs);
-    //       setBBsData([...bbsData, { ...bbs.data(), id: bbs.id }]);
-    //     });
-    //   });
-    // console.log(bbsList);
-
-    realDB
-      .ref("bbs")
-      //   .child("bbs")
+    firestore
+      .collection("bbs")
       .get()
-      .then((result) => {
-        // console.log(result.val());
-
-        Object.keys(result).forEach((key) => {
-          console.log(key);
-          console.log(result[key]);
-        });
-
-        result.forEach((item) => {
-          //   console.log(item);
-          setBBsData([item.val()]);
+      .then((bbsList) => {
+        console.log(bbsList.size);
+        bbsList.forEach((bbs) => {
+          console.log(bbs);
+          setBBsData([...bbsData, { ...bbs.data(), id: bbs.id }]);
         });
       });
+    console.log(bbsList);
   };
   useEffect(firebaseFetch, []);
 
