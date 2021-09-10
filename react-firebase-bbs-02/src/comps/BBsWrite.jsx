@@ -34,12 +34,16 @@ function BBsWrite() {
     b_writer: "",
     b_subject: "",
     b_content: "",
+    b_date: "",
+    b_time: "",
   });
 
   const findByidFetch = async () => {
     if (docId) {
       const result = await firestore.collection("bbs").doc(docId).get();
-      setBBs(result.data());
+      if (result.data()) {
+        setBBs(result.data());
+      }
     }
   };
   useEffect(findByidFetch, []);
@@ -60,8 +64,12 @@ function BBsWrite() {
     // b_date, b_time 칼럼을 추가하겠다
     const saveBBS = {
       ...bbs,
-      b_date: moment().format("YYYY[-]MM[-]DD"),
-      b_time: moment().format("HH:mm:ss"),
+      // bbs.b_date의 값이 "" 이
+      //		아니면 bbs.b_date를 b_date 칼럼에 저장하고
+      // bbs.b_date의 값이 "" 이면
+      //		moment()... 값을 b_date 칼럼에 저장하라
+      b_date: bbs.b_date || moment().format("YYYY[-]MM[-]DD"),
+      b_time: bbs.b_time || moment().format("HH:mm:ss"),
     };
 
     /**
@@ -72,7 +80,7 @@ function BBsWrite() {
     firestore
       .collection("bbs")
       //   .add(saveBBS)
-      .doc()
+      .doc(docId)
       .set(saveBBS)
       .then((result) => {
         console.log(result);
@@ -103,7 +111,7 @@ function BBsWrite() {
           name="b_subject"
           onChange={onChange}
           placeholder="제목"
-          defaultChecked={bbs.b_subject}
+          defaultValue={bbs.b_subject}
         />
       </div>
       <div>
