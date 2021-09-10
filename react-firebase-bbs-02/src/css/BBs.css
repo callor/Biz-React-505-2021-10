@@ -53,6 +53,59 @@ div.bbs_write button {
   border-radius: 10px;
 }
 
-div.bbs_write button:hover {
+button:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+div.bbs_detail {
+  width: 90vw;
+  margin: 10px auto;
+}
+
+div.bbs_detail label,
+div.bbs_detail span {
+  display: inline-block;
+  margin: 0;
+  padding: 8px;
+}
+
+div.bbs_detail label {
+  width: 30%;
+  background-color: #ddd;
+  text-align: right;
+  color: blue;
+  font-weight: bold;
+}
+
+div.bbs_detail span {
+  width: 60%;
+  background-color: #eee;
+  text-align: left;
+}
+
+div.bbs_btn_box {
+  width: 90%;
+  text-align: right;
+  padding: 8px;
+  margin: 5px auto;
+}
+
+div.bbs_btn_box button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 10px;
+}
+
+div.bbs_btn_box button:nth-of-type(1) {
+  background-color: blue;
+}
+div.bbs_btn_box button:nth-of-type(2) {
+  background-color: green;
+}
+div.bbs_btn_box button:nth-of-type(3) {
+  background-color: red;
 }

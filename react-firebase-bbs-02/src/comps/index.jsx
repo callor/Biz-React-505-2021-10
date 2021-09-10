@@ -4,3 +4,4 @@ export { default as BBsMain } from "./BBsMain";
 export { default as Header } from "./Header";
 export { default as Footer } from "./Footer";
 export { default as BBsWrite } from "./BBsMain";
+export { default as BBsDetail } from "./BbsDetail";
