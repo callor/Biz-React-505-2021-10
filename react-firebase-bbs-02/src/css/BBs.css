@@ -1,0 +1,58 @@
+table.bbs_list {
+  width: 95%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+table.bbs_list tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+table.bbs_list th,
+table.bbs_list td {
+  padding: 8px;
+}
+
+table.bbs_list th {
+  color: blue;
+}
+
+div.bbs_write {
+  width: 90%;
+  margin: 10px auto;
+}
+
+div.bbs_write input {
+  display: inline-block;
+  width: 80%;
+  padding: 8px;
+  margin: 5px auto;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #ddd;
+}
+
+div.bbs_write input:hover {
+  background-color: #ddd;
+}
+
+div.bbs_write input:focus {
+  background-color: #eee;
+}
+
+div.bbs_write button {
+  width: 80%;
+  background-color: blue;
+  color: white;
+  margin: 5px auto;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+div.bbs_write button:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
