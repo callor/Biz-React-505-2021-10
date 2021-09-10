@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { firestore } from "../config/BBSConfig";
 import moment from "moment";
 import { useHistory, useRouteMatch } from "react-router-dom";
@@ -38,15 +38,15 @@ function BBsWrite() {
     b_time: "",
   });
 
-  const findByidFetch = async () => {
+  const findByidFetch = useCallback(async () => {
     if (docId) {
       const result = await firestore.collection("bbs").doc(docId).get();
       if (result.data()) {
         setBBs(result.data());
       }
     }
-  };
-  useEffect(findByidFetch, []);
+  }, [docId]);
+  useEffect(findByidFetch, [findByidFetch]);
 
   // onChange Event 핸들러
   // 키보드로 입력한 데이터를 bbs 객체에 setting 하는 일을 수행한다

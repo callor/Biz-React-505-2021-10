@@ -22,7 +22,7 @@ function BbsDetail() {
         setBbs(result.data());
       }
     }
-  }, []);
+  }, [docId]);
   useEffect(findByIdFetch, [findByIdFetch]);
 
   const onDelete = (e) => {
@@ -39,6 +39,7 @@ function BbsDetail() {
 
   return (
     <div className="bbs_detail">
+      <h1>DETAIL</h1>
       <div>
         <label htmlFor="">작성일자</label>
         <span>{bbs.b_date}</span>
