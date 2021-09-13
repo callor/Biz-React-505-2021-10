@@ -37,6 +37,10 @@
   }
 }
 
+td {
+  cursor: pointer;
+}
+
 footer {
   background-color: #ddd;
   text-align: center;

@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header" style={backgoundStyle}></header>
-      <section className="w3-container w3-mragin">
+      <section className="w3-container w3-margin">
         <BuckMain />
       </section>
       <Footer />
