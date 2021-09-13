@@ -41,13 +41,27 @@ function BuckMain() {
     setBuckList(_bucketList);
   };
 
+  /*
+  int[] nums = {1,2,3,4,5,6,7}
+  for(int i = 0 ; i < nums.length ; i++) {
+	  if(nums[i] == 3) {
+		  break;
+	  }
+  }
+ */
+
   // 리스트에서 input box에 버킷을 변경한 후 Enter를 누르면
   // 실행할 함수
   const bucket_update = (id, title) => {
     const _bucketList = bucketList.map((bucket) => {
       if (bucket.b_id === id) {
+        // b_id가 id값과 같으면
+        // bucket에 담긴 항목중에서 b_title 항목만
+        // 변경하여 통째로 return
         return { ...bucket, b_title: title };
       } else {
+        // b_id가 id와 같지 않으면
+        // 아무것도 변경없이 bucket을 그대로 return
         return bucket;
       }
     });
