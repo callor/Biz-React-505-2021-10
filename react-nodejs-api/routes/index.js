@@ -28,7 +28,7 @@ router.post("/insert", async (req, res) => {
 
 router.get("/data", async (req, res) => {
   const result = await BUCKET.find({});
-  res.json(result);
+  await res.json(result);
   // console.log(result);
 });
 
