@@ -9,13 +9,15 @@ function BuckMain() {
   const [bucketList, setBuckList] = useState([]);
 
   const bucketFetch = async () => {
-    const bucket = fetch("http://localhost:5000/data");
+    const res = await fetch("http://localhost:5000/data");
+    const bucket = await res.json();
+    console.log(bucket);
     setBuckList([...bucketList, bucket]);
   };
 
   useEffect(bucketFetch, []);
 
-  const buck_insert = (bucket_text) => {
+  const buck_insert = async (bucket_text) => {
     const bucket = {
       b_id: uuid(),
       b_start_date: moment().format("YYYY[-]MM[-]DD HH:mm:ss"),
@@ -26,7 +28,17 @@ function BuckMain() {
       b_cancel: false,
     };
     // 원래있던 bucketList에 새로운 bucket을 추가하기
-    setBuckList([...bucketList, bucket]);
+    await setBuckList([...bucketList, bucket]);
+
+    const fetch_option = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bucket),
+    };
+    await fetch("http://localhost:5000/insert", fetch_option);
+    await bucketFetch();
   };
 
   // 리스트에서 FLAG항목을 클릭하면 실행할 함수
