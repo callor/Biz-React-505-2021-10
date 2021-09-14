@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import BuckList from "./BuckList";
 import BuckInput from "./BuckInput";
 import uuid from "react-uuid";
@@ -8,14 +8,14 @@ function BuckMain() {
   // 버킷리스트를 담을 배열
   const [bucketList, setBuckList] = useState([]);
 
-  const bucketFetch = async () => {
+  const bucketFetch = useCallback(async () => {
     const res = await fetch("http://localhost:5000/data");
-    const bucket = await res.json();
-    console.log(bucket);
-    setBuckList([...bucketList, bucket]);
-  };
-
-  useEffect(bucketFetch, []);
+    const bucketList = await res.json();
+    console.log("BUCKET");
+    // console.log(bucket);
+    await setBuckList(bucketList);
+  }, []);
+  useEffect(bucketFetch, [bucketFetch]);
 
   const buck_insert = async (bucket_text) => {
     const bucket = {
@@ -38,7 +38,7 @@ function BuckMain() {
       body: JSON.stringify(bucket),
     };
     await fetch("http://localhost:5000/insert", fetch_option);
-    await bucketFetch();
+    // await bucketFetch();
   };
 
   // 리스트에서 FLAG항목을 클릭하면 실행할 함수

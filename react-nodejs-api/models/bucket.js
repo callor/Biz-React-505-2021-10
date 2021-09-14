@@ -1,4 +1,11 @@
 /**
+ * ORM 방식으로 DB 핸들링
+ * ORM
+ * SQL 방식의 RDBMS에서 직접 SQL을 사용하지 않고
+ * 함수, method등을 이용하여 CRUD를 쉽게 구현할수 있도록 만들어진
+ * 도구
+ * MySQL : Sequelize, MongoDb : mongoose
+ *
  * mongoDB는 schema 를 만들지 않는 전통적인 NoSQL이다
  * NoSQL은 도큐먼트 방식으로 데이터를 저장하고 관리하는 DB이다
  * RDBMS에는 초기에 반드시 데이터를 저장할 공간을 만들고

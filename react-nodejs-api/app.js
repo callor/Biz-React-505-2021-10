@@ -16,7 +16,16 @@ dbConn.on("error", () => {
   console.error;
 });
 
-mongoose.connect("mongodb://localhost:27017/mydb");
+// config/mongConfigSample.json에 Atlas USERID와 PASSWORD를
+// 등록한 후 mongoConfig.json으로 변경한 후 실행하시오
+const mongoConfig = require("./config/mongoConfig.json");
+const mongAtlas =
+  `mongodb+srv://${mongoConfig.USERID}` +
+  `:${mongoConfig.PASSWORD}` +
+  `@cluster0.gthbi.mongodb.net/myFirstDatabase` +
+  `?retryWrites=true&w=majority`;
+// mongoose.connect("mongodb://localhost:27017/dbms");
+mongoose.connect(mongAtlas);
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
