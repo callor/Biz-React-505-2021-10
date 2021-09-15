@@ -31,6 +31,7 @@ dbConn.on("error", (error) => {
   console.log(error);
 });
 mongoose.connect(atlasURL);
+// mongoose.connect("mongodb://localhost:27017/mydb");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");

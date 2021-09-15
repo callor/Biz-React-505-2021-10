@@ -85,7 +85,7 @@ function BuckItem({ args, bucket }) {
         <td className="b_end_date">◎</td>
       )}
       <td>
-        <input type="checkbox" checked={bucket.b_cancel} />
+        <input type="checkbox" defaultChecked={bucket.b_cancel} />
       </td>
     </tr>
   );

@@ -45,8 +45,20 @@ function BuckMain() {
     // await bucketFetch();
   };
 
-  const putBucket = (id, column, data) => {
+  const putBucket = async () => {
     console.log(saveBucket);
+    const putFetchOption = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(saveBucket),
+    };
+    const result = await fetch(
+      "http://localhost:5000/api/bucket",
+      putFetchOption
+    );
+    console.log(result.json());
   };
   useEffect(putBucket, [saveBucket]);
 

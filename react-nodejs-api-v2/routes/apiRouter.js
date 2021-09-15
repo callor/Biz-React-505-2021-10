@@ -57,9 +57,36 @@ router.post("/bucket", async (req, res) => {
   res.json({ result: "OK" });
 });
 
-router.put("/bucket", (req, res) => {
+router.put("/bucket", async (req, res) => {
   const body = req.body;
-  console.log("데이터 업데이트 하기");
+  await BUCKET.findOneAndUpdate({ b_id: body.b_id }, body);
+  res.json({ result: "OK" });
+});
+
+/**
+ *
+ * 3 Tier ( 3layer App )
+ * react -> node -> atlas
+ * atlas -> node -> react
+ *
+ * findOne() 이 return하는 doc가 성능상 문제로
+ * null 값이 되어 overrwrite() 가 비정상 작동되므로
+ * 사용하지 말자!!
+ */
+router.put("/bucket/over", async (req, res) => {
+  const body = req.body;
+  // DB에서 b_id 값이 body.b_id와 같은 데이터를 SELECT 하기
+  const doc = await BUCKET.findOne({ b_id: body.b_id });
+  console.log(doc);
+  // select 한 model 객체의 모든 요소 데이터를
+  // body로 받은 데이터로 변경하라
+  // doc = {...doc, b_id:body.b_id, b_title : body.b_title }
+  await doc.overwrite(body);
+  // 변경된 데이터를 DB update 하라
+  await doc.save();
+
+  await console.log("데이터 업데이트 하기");
+  await console.table(body);
 });
 
 // localhost:3000/api/get
