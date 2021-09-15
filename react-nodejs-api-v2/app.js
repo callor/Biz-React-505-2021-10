@@ -4,6 +4,9 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+const atlasURL =
+  "mongodb+srv://callor:<password>@cluster0.gthbi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const apiRouter = require("./routes/apiRouter");
