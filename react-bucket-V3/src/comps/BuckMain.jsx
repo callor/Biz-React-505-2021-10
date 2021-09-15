@@ -7,6 +7,8 @@ import moment from "moment";
 function BuckMain() {
   // 버킷리스트를 담을 배열
   const [bucketList, setBuckList] = useState([]);
+  // db에 update할 state
+  const [saveBucket, setSaveBucket] = useState({});
 
   const bucketFetch = useCallback(async () => {
     const res = await fetch("http://localhost:5000/api/get");
@@ -43,6 +45,11 @@ function BuckMain() {
     // await bucketFetch();
   };
 
+  const putBucket = (id, column, data) => {
+    console.log(saveBucket);
+  };
+  useEffect(putBucket, [saveBucket]);
+
   // 리스트에서 FLAG항목을 클릭하면 실행할 함수
   const flag_change = (id) => {
     const _bucketList = bucketList.map((bucket) => {
@@ -50,10 +57,9 @@ function BuckMain() {
        * 전달받은 id와 같은 항목의 flag를 1 증가시키기
        */
       if (bucket.b_id === id) {
-        return {
-          ...bucket,
-          b_flag: bucket.b_flag + 1,
-        };
+        const _temp = { ...bucket, b_flag: bucket.b_flag + 1 };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         return bucket;
       }
@@ -79,7 +85,9 @@ function BuckMain() {
         // b_id가 id값과 같으면
         // bucket에 담긴 항목중에서 b_title 항목만
         // 변경하여 통째로 return
-        return { ...bucket, b_title: title };
+        const _temp = { ...bucket, b_title: title };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         // b_id가 id와 같지 않으면
         // 아무것도 변경없이 bucket을 그대로 return
@@ -119,12 +127,13 @@ function BuckMain() {
   const bucket_complet = (id) => {
     const _bucketList = bucketList.map((bucket) => {
       if (bucket.b_id === id) {
-        return {
+        const _temp = {
           ...bucket,
           b_end_date: moment().format("YYYY[-]MM[-]DD HH:mm:ss"),
-          // bucket.b_end_date ||
           b_end_check: !bucket.b_end_check,
         };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         return bucket;
       }
@@ -135,10 +144,9 @@ function BuckMain() {
   const bucket_cancel = (id) => {
     const _bucketList = bucketList.map((bucket) => {
       if (bucket.b_id === id) {
-        return {
-          ...bucket,
-          b_cancel: !bucket.b_cancel,
-        };
+        const _temp = { ...bucket, b_cancel: !bucket.b_cancel };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         return bucket;
       }
