@@ -9,7 +9,7 @@ function BuckMain() {
   const [bucketList, setBuckList] = useState([]);
 
   const bucketFetch = useCallback(async () => {
-    const res = await fetch("http://localhost:5000/data");
+    const res = await fetch("http://localhost:5000/api/get");
     const bucketList = await res.json();
     console.log("BUCKET");
     // console.log(bucket);
@@ -18,6 +18,7 @@ function BuckMain() {
   useEffect(bucketFetch, [bucketFetch]);
 
   const buck_insert = async (bucket_text) => {
+    // 저장할 데이터를 생성하고
     const bucket = {
       b_id: uuid(),
       b_start_date: moment().format("YYYY[-]MM[-]DD HH:mm:ss"),
@@ -27,6 +28,7 @@ function BuckMain() {
       b_end_check: false,
       b_cancel: false,
     };
+    // 화면에 보여질 리스트에 추가하기
     // 원래있던 bucketList에 새로운 bucket을 추가하기
     await setBuckList([...bucketList, bucket]);
 
@@ -37,7 +39,7 @@ function BuckMain() {
       },
       body: JSON.stringify(bucket),
     };
-    await fetch("http://localhost:5000/insert", fetch_option);
+    await fetch("http://localhost:5000/api/bucket", fetch_option);
     // await bucketFetch();
   };
 

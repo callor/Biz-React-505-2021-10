@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+
+const BUCKET = require("../models/bucket");
 /**
  * RESTFul
  * 클라이언트에서 요청을 할때
@@ -41,36 +43,18 @@ const router = express.Router();
  *
  */
 
-const retData = [
-  {
-    b_id: "0001",
-    b_title: "반갑습니다",
-    b_start_date: "2021-09-15",
-    b_end_date: "",
-    b_end_check: false,
-    b_cancel: false,
-  },
-  {
-    b_id: "0002",
-    b_title: "우리나라만세",
-    b_start_date: "2021-09-15",
-    b_end_date: "",
-    b_end_check: false,
-    b_cancel: false,
-  },
-];
-
 /**
  * POST 로 받는 데이터는 주로 form 에 담긴 데이터이다
  * API Server에서는 fetch() 통하여 데이터를 전달받을때도 사용한다
  * request의 body에 담겨서 전달되기 때문에
  * req.body 에서 데이터를 추출하면 된다
  */
-router.post("/bucket", (req, res) => {
+router.post("/bucket", async (req, res) => {
   const body = req.body;
-  console.log("데이터 추가하기");
+  const result = await BUCKET.create(body);
+  console.log("데이터 추가하기", result);
   console.log(body);
-  res.send("끝");
+  res.json({ result: "OK" });
 });
 
 router.put("/bucket", (req, res) => {
@@ -79,9 +63,10 @@ router.put("/bucket", (req, res) => {
 });
 
 // localhost:3000/api/get
-router.get("/get", (req, res) => {
+router.get("/get", async (req, res) => {
+  const buckets = await BUCKET.find({});
   console.log("전체 리스트 요청하기");
-  res.json(retData);
+  res.json(buckets);
 });
 // localhost:3000/api/1/get
 router.get("/:id/get", (req, res) => {
