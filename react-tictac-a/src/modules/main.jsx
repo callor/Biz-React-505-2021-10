@@ -54,17 +54,31 @@ const arrayEx = () => {
  *
  */
 
-const RenderSquare = () => {
+// const RenderSquare = (props) => {
+//  const { squares } = props;
+const RenderSquare = ({ squares, changeSquares }) => {
+  // const squares = props.squares
   const arrayBox = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
   ];
 
+  const onButtonClick = (e) => {
+    // if(e.target.tagName === "BUTTON")
+    const index = e.target.dataset.index;
+    changeSquares(index);
+  };
+
+  let index = 0;
   const buttons = arrayBox.map((subBox) => {
     const buttonCols = subBox.map(() => {
       // 한라인의 button 만들기
-      return <button />;
+      return (
+        <button data-index={index} onClick={onButtonClick}>
+          {squares[index++]}
+        </button>
+      );
     });
     // 각 라인의 컴포넌트 만들기
     return <div className="box_row">{buttonCols}</div>;
