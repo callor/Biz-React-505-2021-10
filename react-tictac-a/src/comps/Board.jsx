@@ -38,14 +38,22 @@ function Board() {
   // RenderSquare를 바닐라 함수로 불러 사용하는 방법
   // return <div>{RenderSquare()}</div>;
 
+  const restart_game = () => {
+    // squars 배열을 초기화하고
+    setSquares(Array(9).fill(null));
+    // player 를 선택하는 flag를 반전하기
+    setOxFlag(!oxFlag);
+  };
+
   // RenderSquare를 컴포넌트로 사용하는 방법
   const player = oxFlag ? "O" : "X";
   const winner = calcWinner(squares);
+  const message = winner ? `승리자 : ${winner}` : `다음 플레이어 :${player}`;
   return (
     <div>
-      <h3>다음 플레이어 : {player} </h3>
+      <h3>{message}</h3>
       <RenderSquare squares={squares} changeSquares={changeSquares} />
-      <div>승리자 : {winner}</div>
+      {winner ? <h4 onClick={restart_game}>다시시작</h4> : <h4>&nbsp;</h4>}
     </div>
   );
 }
