@@ -5,9 +5,9 @@ function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [oxFlag, setOxFlag] = useState(true);
 
-  if (calcWinner(squares)) {
-    // 누군가 이겼다라는 표식을 보이면 된다
-  }
+  //   if (calcWinner(squares)) {
+  // 누군가 이겼다라는 표식을 보이면 된다
+  //   }
 
   // squares 배열의 index 번째 요소의 값을
   // 변경하려고 한다
@@ -40,10 +40,12 @@ function Board() {
 
   // RenderSquare를 컴포넌트로 사용하는 방법
   const player = oxFlag ? "O" : "X";
+  const winner = calcWinner(squares);
   return (
     <div>
       <h3>다음 플레이어 : {player} </h3>
       <RenderSquare squares={squares} changeSquares={changeSquares} />
+      <div>승리자 : {winner}</div>
     </div>
   );
 }
