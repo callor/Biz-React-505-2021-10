@@ -104,4 +104,4 @@ const calcWinner = (squares) => {
   return null;
 };
 
-export { RenderSquare };
+export { RenderSquare, calcWinner };

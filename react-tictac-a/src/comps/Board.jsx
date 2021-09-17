@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { RenderSquare } from "../modules/main";
+import { RenderSquare, calcWinner } from "../modules/main";
 
 function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [oxFlag, setOxFlag] = useState(true);
+
+  if (calcWinner(squares)) {
+    // 누군가 이겼다라는 표식을 보이면 된다
+  }
 
   // squares 배열의 index 번째 요소의 값을
   // 변경하려고 한다
   // 매개변수로 index 값
   const changeSquares = (index) => {
     // squares[index] = "B"; // 절대 불가
+
+    // 승부가 났는지 확인하고 승부가 있으면 더이상 진행 금지
+    if (calcWinner(squares)) return;
 
     // if(문자열변수) : 문자열변수값이 null, undefined, "" 이면 무조건 false
     // 아니면 true
@@ -32,9 +39,10 @@ function Board() {
   // return <div>{RenderSquare()}</div>;
 
   // RenderSquare를 컴포넌트로 사용하는 방법
+  const player = oxFlag ? "O" : "X";
   return (
     <div>
-      <h3>다음 플레이어 : O </h3>
+      <h3>다음 플레이어 : {player} </h3>
       <RenderSquare squares={squares} changeSquares={changeSquares} />
     </div>
   );
