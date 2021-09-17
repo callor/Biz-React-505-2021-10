@@ -86,4 +86,22 @@ const RenderSquare = ({ squares, changeSquares }) => {
   return buttons;
 };
 
+/**
+ * 0,1,2
+ * 3,4,5
+ * 6,7,8
+ */
+const calcWinner = (squares) => {
+  if (squares[0] && squares[0] === squares[1] && squares[0] === squares[2]) {
+    return squares[0];
+  } else if (
+    squares[3] &&
+    squares[3] === squares[4] &&
+    squares[3] === squares[5]
+  ) {
+    return squares[3];
+  }
+  return null;
+};
+
 export { RenderSquare };
