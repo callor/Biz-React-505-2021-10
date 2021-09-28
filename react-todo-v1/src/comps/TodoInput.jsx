@@ -5,7 +5,11 @@ function TodoInput(props) {
 
   // 입력박스에 text를 입력하면 한개의 TODO데이터 만들기
   const onChangeHandler = (e) => {
-    setTodo({ ...todo, t_text: e.target.value });
+    setTodo({
+      t_id: todoList.length,
+      t_text: e.target.value,
+      t_date: Date().toString(),
+    });
   };
 
   const todoInsert = () => {
