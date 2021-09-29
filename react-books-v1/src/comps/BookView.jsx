@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import BookContext from "../context/BookContext";
 
 function BookView() {
-  return <div>입력된 도서명 :</div>;
+  const { book } = useContext(BookContext);
+  return <div>입력된 도서명 : {book}</div>;
 }
 
 export default BookView;
