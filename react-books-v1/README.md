@@ -35,4 +35,14 @@
 
 - 수없이 많은 개념을 갖는 Context 용어 이지만 React에서는 state, setState()함수를 쉽게 사용할수 있는 개념으로 만들어 놨다.
 
-1. state를 관리할 Context 컴포넌트를 선언하기
+1. state를 관리할 Context 컴포넌트를 선언하기  
+   createContext() 함수를 사용하여 컴포넌트를 생성하고 export 하기
+
+2. App.js(state를 공유할 컴포넌트)를 Context로 감싸기  
+   생성한 Context 컴포넌트를 import하기
+   제일 바깥쪽 컴포넌트에 Context.Provider를 사용하여 모든 컴포넌트 감싸기
+
+3. state를 사용할 곳에서는  
+   생성한 Context 컴포넌트를 import하기  
+   import 한 Context 컴포넌트를 useContext()함수에 매개변수로 전달하고  
+   사용할 state를 분해하기
