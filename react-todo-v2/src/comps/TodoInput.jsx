@@ -1,10 +1,14 @@
+import { useTodoContext } from "../context/AppContextProvider";
 import "../css/TodoInput.css";
 
 function TodoInput() {
+  const { todo, onChange, onKeyPress, onClick } = useTodoContext();
   return (
     <div className="form">
-      <input />
-      <div className="btn_insert">추가</div>
+      <input value={todo.t_text} onChange={onChange} onKeyPress={onKeyPress} />
+      <div className="btn_insert" onClick={onClick}>
+        추가
+      </div>
     </div>
   );
 }
