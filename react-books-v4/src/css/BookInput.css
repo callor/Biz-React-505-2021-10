@@ -1,0 +1,31 @@
+div.input_box {
+  width: 100vw;
+  border: 1px solid #ddd;
+  margin: 20px auto;
+  padding: 0.7rem;
+}
+
+div.input_box label,
+div.input_box input {
+  display: block;
+  padding: 8px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+div.input_box label {
+  text-align: left;
+  color: blue;
+  font-weight: bold;
+}
+
+div.input_box button {
+  background-color: blue;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8em;
+  margin-left: 70%;
+  margin-top: 5px;
+}

@@ -1,0 +1,21 @@
+nav.main_nav {
+  display: flex;
+  background-color: blue;
+  color: white;
+}
+
+/* router-dom NavLink, Link 컴포넌트로 작성된 곳은 
+	a tag가 되므로 a tag 속성을 부여하도록
+*/
+
+nav.main_nav a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  padding: 0.8rem;
+  margin-left: 30px;
+}
+
+nav.main_nav a:hover {
+  background-color: blueviolet;
+}
