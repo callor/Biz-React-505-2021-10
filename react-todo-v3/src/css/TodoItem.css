@@ -25,9 +25,17 @@
 
 .todo_text {
   flex: 1;
+  word-break: break-all;
 }
 
 .checked {
   text-decoration-line: line-through;
   color: #adb5bd;
+}
+.check_mark {
+  font-size: 1.5rem;
+  line-height: 1rem;
+  margin-left: 1rem;
+  color: #3bc9db;
+  font-weight: 800;
 }
