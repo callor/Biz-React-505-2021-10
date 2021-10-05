@@ -1,5 +1,5 @@
-div.login_formn {
-  margin: 10px auto;
+div.login_form {
+  margin: 20px auto;
   padding: 20px;
 }
 
@@ -17,7 +17,7 @@ div.login_form button {
   font-weight: 700;
 
   display: block;
-  width: 60px;
+  width: 60%;
   height: 49px;
   line-height: 49px;
 
