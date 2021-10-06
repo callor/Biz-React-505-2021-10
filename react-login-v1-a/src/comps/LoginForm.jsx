@@ -18,7 +18,9 @@ function LoginForm() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
+      credentials: "include",
       body: JSON.stringify({
         userid: account.userid,
         password: account.password,
@@ -32,6 +34,10 @@ function LoginForm() {
     // ES6+ 버전에서 safe null 검사를 수행하는 코드가 있다
     // res가 정상(null, undefined 가 아니면 .ok 속성을 검사하라)
     // null 로 인한 오류를 방지하는 코드다
+    console.log("res", res);
+    if (res.status === 401) {
+      alert("아이디 또는 비번 확인하세요");
+    }
     if (res?.ok) {
       const resultUser = await res.json();
 
