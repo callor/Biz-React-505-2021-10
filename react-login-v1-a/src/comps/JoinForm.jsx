@@ -1,9 +1,11 @@
 import "../css/JoinForm.css";
-import { useState } from "react";
+import { useUserContext } from "../context/UserContextProvider";
 
 import React from "react";
 
 function JoinForm() {
+  const { user, setUser } = useUserContext();
+
   const onChangeAccount = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
