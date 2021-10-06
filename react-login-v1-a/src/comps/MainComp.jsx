@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm";
 import JoinForm from "./JoinForm";
 import Notice from "./Notice";
 import BBs from "./BBs";
+import Logout from "./Logout";
 import { Route } from "react-router-dom";
 
 import { useUserContext } from "../context/UserContextProvider";
@@ -40,6 +41,9 @@ function MainComp() {
       </Route>
       <Route path="/join">
         <JoinForm />
+      </Route>
+      <Route path="/logout" exact>
+        <Logout />
       </Route>
     </MainNav>
   );
