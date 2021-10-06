@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import MainNav from "./comps/MainNav";
 import LoginForm from "./comps/LoginForm";
+import JoinForm from "./comps/JoinForm";
+import { Route } from "react-router-dom";
 
 const NavList = [
   { id: 0, title: "Home", link: "/" },
@@ -18,7 +20,12 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <MainNav NavList={NavList}>
-        <LoginForm />
+        <Route path="/login" exact>
+          <LoginForm />
+        </Route>
+        <Route path="/join">
+          <JoinForm />
+        </Route>
       </MainNav>
     </div>
   );
