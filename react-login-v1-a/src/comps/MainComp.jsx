@@ -6,6 +6,7 @@ import Notice from "./Notice";
 import BBs from "./BBs";
 import Logout from "./Logout";
 import { Route } from "react-router-dom";
+import Admin from "./Admin";
 
 import { useUserContext } from "../context/UserContextProvider";
 
@@ -22,6 +23,7 @@ function MainComp() {
     user?.userid
       ? { id: 4, title: "마이페이지", link: "/mypage" }
       : { id: 4, title: "회원가입", link: "/join" },
+    { id: 5, title: "게시판관리", link: "/admin" },
   ];
 
   return (
@@ -44,6 +46,9 @@ function MainComp() {
       </Route>
       <Route path="/logout" exact>
         <Logout />
+      </Route>
+      <Route path="/admin" exact>
+        <Admin />
       </Route>
     </MainNav>
   );

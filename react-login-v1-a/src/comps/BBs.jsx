@@ -10,7 +10,7 @@ function BBs() {
     const fetchData = async () => {
       const res = await fetch("http://localhost:8080/users", {
         method: "POST",
-        header: {
+        headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "http://localhost:3000",
         },

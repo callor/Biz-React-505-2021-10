@@ -1,6 +1,7 @@
 import "../css/LoginForm.css";
 import { useState } from "react";
 import { useUserContext } from "../context/UserContextProvider";
+import { useHistory } from "react-router-dom";
 
 function LoginForm() {
   const { setUser } = useUserContext();
@@ -8,6 +9,8 @@ function LoginForm() {
     userid: "",
     password: "",
   });
+
+  const history = useHistory();
 
   const onChage = (e) => {
     setAccount({ ...account, [e.target.name]: e.target.value });
@@ -59,6 +62,7 @@ function LoginForm() {
       }
       alert("로그인 성공");
       setUser(resultUser);
+      history.replace("/");
     }
   };
 
