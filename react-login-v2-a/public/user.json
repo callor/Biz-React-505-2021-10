@@ -1,0 +1,9 @@
+{
+  "users": [
+    {
+      "userid": "root",
+      "password": "12345",
+      "name": "홍길동"
+    }
+  ]
+}
