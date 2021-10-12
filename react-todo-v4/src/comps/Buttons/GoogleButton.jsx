@@ -48,7 +48,7 @@ function GoogleButton() {
       await auth2.attachClickHandler(buttonRef.current, {}, googleResponse);
     });
   };
-  useEffect(googleSDK_init, []);
+  useEffect(googleSDK_init, [googleSDK_init]);
 
   const logout = (e) => {
     const auth2 = window.gapi.auth2.getAuthInstance();

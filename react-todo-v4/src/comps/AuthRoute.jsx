@@ -16,7 +16,7 @@ function AuthRoute({ children }) {
     // if (!user?.userid) {
     //   history.replace("/login");
     // }
-  });
+  }, [history, setUser]);
   useEffect(fetchCallback, [fetchCallback]);
   return <>{children}</>;
 }
