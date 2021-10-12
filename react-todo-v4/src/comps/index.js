@@ -11,3 +11,4 @@ export { default as CompButton } from "./Buttons/CompButton";
 export { default as HomeButton } from "./Buttons/HomeButton";
 
 export { default as MyButton } from "./Buttons/MyButton";
+export { default as GoogleButton } from "./Buttons/GoogleButton";
