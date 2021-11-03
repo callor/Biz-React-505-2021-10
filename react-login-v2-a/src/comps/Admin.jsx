@@ -20,7 +20,7 @@ import { useUserContext } from "../context/UserContextProvider";
  *
  */
 function Admin({ role }) {
-  const { user, setUser } = useUserContext();
+  const { user } = useUserContext();
 
   // user state 정보가 있으면 관리자 페이지를 보여주기
   return (

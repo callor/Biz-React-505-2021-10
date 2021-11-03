@@ -20,7 +20,7 @@ const AuthRoute = ({ children }) => {
     } else {
       history.replace("/login");
     }
-  }, [setUser]);
+  }, [setUser, history]);
 
   // 페이지가 열리려고 시도되면 자동으로 실행하도록
   useEffect(fetchCb, [fetchCb]);

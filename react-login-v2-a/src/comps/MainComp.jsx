@@ -12,7 +12,7 @@ import AuthRoute from "./AuthRoute";
 import { useUserContext } from "../context/UserContextProvider";
 
 function MainComp() {
-  const { user, setUser } = useUserContext();
+  const { user } = useUserContext();
 
   const NavList = [
     { id: 0, title: "Home", link: "/" },
